@@ -1,0 +1,10 @@
+{
+  "description": "Streamline medical case management with MiceCare, enabling doctors and clinics to register and prioritize cases quickly, even offline.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
