@@ -232,7 +232,7 @@ export default function App() {
         <section className="hero section" id="inicio">
           <div className="hero-copy">
             <div className="kicker"><span/> Healthcare that reaches farther</div>
-            <h1>Every case counts.<br/><span>Every doctor matters.</span></h1>
+            <h1>MeshCare<br/><span> Where connectivity meets better care.</span></h1>
             <p>Record cases in 90 seconds, even without internet.</p>
             <div className="hero-actions"><PillLink href="#medico">I'm a doctor</PillLink><PillLink href="#clinica" secondary>I'm a clinic</PillLink></div>
             <div className="trust-note"><span><Icon name="check" size="sm" /></span> Built alongside those who care</div>
