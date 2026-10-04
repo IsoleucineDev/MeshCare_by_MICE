@@ -1,4 +1,9 @@
 import type { ReactNode } from "react";
+import dianaPhoto from "./assets/diana-de-la-torre.jpg";
+import fatimaPhoto from "./assets/fatima-herrera.jpg";
+import ileanaPhoto from "./assets/ileana-tapia.jpg";
+import kiaraPhoto from "./assets/kiara-hermann.jpg";
+import teamPhoto from "./assets/team-mice.jpg";
 
 type IconName =
   | "alert"
@@ -164,7 +169,7 @@ function ServiceCard({ type }: { type: "doctor" | "clinic" }) {
         <div className="feature-list">
           {serviceFeatures[type].map((item) => <div key={item.label}><span><Icon name={item.icon} /></span><b>{item.label}</b></div>)}
         </div>
-        <PillLink href={isDoctor ? "https://meshcare-doctor.netlify.app/" : "#demo-clinica"} external={isDoctor}>
+        <PillLink href={isDoctor ? "https://meshcare-doctor.netlify.app/" : "https://meshcare-admin.netlify.app/"} external>
           {isDoctor ? "Open doctor app" : "Open clinic dashboard"}
         </PillLink>
       </div>
@@ -196,22 +201,24 @@ function Workflow() {
 }
 
 const team = [
-  { name: "Kiara Hermann", surname: "San Lucas", role: "Product", tone: "a" },
-  { name: "Fátima Montserrat", surname: "Herrera González", role: "AI", tone: "b" },
-  { name: "Diana Laura", surname: "De La Torre Trueba", role: "Design", tone: "c" },
-  { name: "Ileana", surname: "Tapia Castillo", role: "Development", tone: "d" },
+  { name: "Kiara Hermann", surname: "San Lucas", tone: "a", photo: kiaraPhoto },
+  { name: "Fátima Montserrat", surname: "Herrera González", tone: "b", photo: fatimaPhoto },
+  { name: "Diana Laura", surname: "De La Torre Trueba", tone: "c", photo: dianaPhoto },
+  { name: "Ileana", surname: "Tapia Castillo", tone: "d", photo: ileanaPhoto },
 ];
 
-function Avatar({ tone }: { tone: string }) {
-  return <div className={`avatar avatar-${tone}`}><span className="avatar-head"/><span className="avatar-hair"/><span className="avatar-body"/></div>;
+function Avatar({ tone, photo, name }: { tone: string; photo?: string; name?: string }) {
+  return (
+    <div className={`avatar avatar-${tone}`}>
+      {photo ? <img src={photo} alt={`${name} portrait`} /> : <><span className="avatar-head"/><span className="avatar-hair"/><span className="avatar-body"/></>}
+    </div>
+  );
 }
 
 function TeamIllustration() {
   return (
-    <div className="team-blob" aria-label="MICE Team illustration">
-      <div className="team-people">
-        {["a","b","c","d"].map((tone) => <Avatar key={tone} tone={tone}/>)}
-      </div>
+    <div className="team-blob">
+      <img src={teamPhoto} alt="The four members of Team MICE standing together outdoors" />
       <div className="team-badge"><Icon name="heart" size="sm" /><span>4 minds<br/><b>1 purpose</b></span></div>
     </div>
   );
@@ -257,7 +264,7 @@ export default function App() {
               <div className="sync-path"><span/><span/><span/><Icon name="cloud" size="lg" /></div>
               <div className="demo-desktop"><ClinicMockup /></div>
             </div>
-            <div className="demo-actions"><PillLink href="https://meshcare-doctor.netlify.app/" external>Try doctor app</PillLink><PillLink href="#demo-clinica" secondary>Try clinic dashboard</PillLink></div>
+            <div className="demo-actions"><PillLink href="https://meshcare-doctor.netlify.app/" external>Try doctor app</PillLink><PillLink href="https://meshcare-admin.netlify.app/" secondary external>Try clinic dashboard</PillLink></div>
           </div>
         </section>
 
@@ -284,9 +291,9 @@ export default function App() {
             <div><p className="eyebrow">THE PEOPLE MAKING IT POSSIBLE</p><h2>Team <span>MICE</span></h2><p>Four perspectives, one mission: using technology to help deliver better care.</p></div>
           </div>
           <div className="team-grid">
-            {team.map((person) => <article className="person-card" key={person.name}><Avatar tone={person.tone}/><div><h3>{person.name}<br/>{person.surname}</h3><span>{person.role}</span></div></article>)}
+            {team.map((person) => <article className="person-card" key={person.name}><Avatar tone={person.tone} photo={person.photo} name={person.name}/><div><h3>{person.name}<br/>{person.surname}</h3></div></article>)}
           </div>
-          <p className="hackathon-line">Hackathon Small AI for Development <span/> Banco Mundial × Hack-Nation <span/> 2026</p>
+          <p className="hackathon-line">Hackathon Small AI for Development <span/> World Bank × Hack-Nation <span/> 2026</p>
         </section>
 
         <section className="closing">
@@ -294,12 +301,12 @@ export default function App() {
           <div className="closing-icon"><Icon name="heart" size="lg" /></div>
           <blockquote>“The fundamental principle of medicine<br/>is to serve humanity.”</blockquote>
           <p>The technology is small. Its impact can be enormous.</p>
-          <div className="closing-actions"><PillLink href="https://meshcare-doctor.netlify.app/" external>Try doctor app</PillLink><PillLink href="#demo-clinica" secondary>Try clinic dashboard</PillLink></div>
+          <div className="closing-actions"><PillLink href="https://meshcare-doctor.netlify.app/" external>Try doctor app</PillLink><PillLink href="https://meshcare-admin.netlify.app/" secondary external>Try clinic dashboard</PillLink></div>
         </section>
       </main>
       <footer>
         <Logo />
-        <div><a href="#idioma"><Icon name="globe" size="sm"/> English</a><a href="https://meshcare-doctor.netlify.app/" target="_blank" rel="noreferrer">Doctor app</a><a href="#demo-clinica">Clinic dashboard</a></div>
+        <div><a href="#idioma"><Icon name="globe" size="sm"/> English</a><a href="https://meshcare-doctor.netlify.app/" target="_blank" rel="noreferrer">Doctor app</a><a href="https://meshcare-admin.netlify.app/" target="_blank" rel="noreferrer">Clinic dashboard</a></div>
         <p>© 2026 Team MICE</p>
       </footer>
     </div>
